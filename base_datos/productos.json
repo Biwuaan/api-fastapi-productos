@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "Producto de prueba",
+        "descripcion": "Desde Swagger",
+        "precio": 99.99
+    },
+    {
+        "nombre": "asdf",
+        "descripcion": "sdf",
+        "precio": 1.0
+    },
+    {
+        "nombre": "asdf",
+        "descripcion": "sdf",
+        "precio": 1.0
+    },
+    {
+        "nombre": "asdf",
+        "descripcion": "sdf",
+        "precio": 1.0
+    },
+    {
+        "nombre": "1234",
+        "descripcion": "sjkdfkljfsdlhksdlfjk",
+        "precio": 3.0
+    },
+    {
+        "nombre": "sdsd",
+        "descripcion": "asdasdasdasdasd",
+        "precio": 2.0
+    },
+    {
+        "nombre": "quiero probar",
+        "descripcion": "otra vez",
+        "precio": 1.0
+    }
+]

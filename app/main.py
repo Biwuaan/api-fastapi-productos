@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
@@ -6,8 +7,15 @@ import os
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permitir cualquier origen (útil para desarrollo)
+    allow_credentials=True,
+    allow_methods=["*"],  # Permitir todos los métodos (GET, POST, etc.)
+    allow_headers=["*"],  # Permitir todos los headers
+)
+
 class Producto(BaseModel):
-    id: int
     nombre: str
     descripcion: str
     precio: float
@@ -31,5 +39,13 @@ def guardar_productos(productos: List[dict]) -> None:
         json.dump(productos, f, indent=4)
 
 @app.get("/productos", response_model=List[Producto])
-def obtener_producto():
+def obtener_productos():
     return cargar_productos()
+
+@app.post("/productos", response_model=Producto)
+def agregar_productos(producto: Producto):
+    productos = cargar_productos()
+    nuevo_producto = producto.dict()
+    productos.append(nuevo_producto)
+    guardar_productos(productos)
+    return producto
