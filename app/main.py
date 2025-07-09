@@ -2,6 +2,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+from fastapi import HTTPException
 import json
 import os
 
@@ -49,3 +50,15 @@ def agregar_productos(producto: Producto):
     productos.append(nuevo_producto)
     guardar_productos(productos)
     return producto
+
+
+@app.delete("/productos/{nombre}", response_model=List[Producto])
+def eliminar_producto(nombre: str):
+    productos = cargar_productos()
+    productos_actualizados = [p for p in productos if p["nombre"].lower() != nombre.lower()]
+
+    if len(productos) == len(productos_actualizados):
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+
+    guardar_productos(productos_actualizados)
+    return productos_actualizados

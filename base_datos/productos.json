@@ -29,10 +29,5 @@
         "nombre": "sdsd",
         "descripcion": "asdasdasdasdasd",
         "precio": 2.0
-    },
-    {
-        "nombre": "quiero probar",
-        "descripcion": "otra vez",
-        "precio": 1.0
     }
 ]
